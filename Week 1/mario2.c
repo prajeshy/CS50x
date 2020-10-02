@@ -1,67 +1,46 @@
-
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
 #include <cs50.h>
 #include <stdio.h>
 
 int main(void)
 {
-    int height;
-
-    // get height from user
-    do
+    // ask for a number
+    int h = 0;
+    printf("How many steps high is the pyramid? ");
+    h = GetInt();
+    
+    while (h < 0 || h > 23)
     {
-        printf("Height: ");
-        height = GetInt();
+        printf("The height must be a whole number between zero and 24. Try again: ");
+        h = GetInt();
     }
-    while (height < 0 || height > 23);
-
-    // print half pyramid
-    for (int i = 1; i <= height; i++)
+    
+    // on each row
+    for (int i = 0; i < h; i++)   
     {
-        for (int j = 1; j <= height - i; j++)
+        // print leading spaces
+        
+        for (int s = 0; s < h - i - 1; s++)
         {
             printf(" ");
-        }
-        for (int k = 1; k <= i; k++)
+        }   
+        
+        // print left-side hashtags
+        for (int x = h - i - 1; x <= h; x++)
         {
             printf("#");
+                
         }
+        // print gap
         printf("  ");
-        for (int j = 1; j <= i; j++)
+          
+        // print right-side hashtags
+        for (int x = h - i - 1; x <= h; x++)
         {
-            printf("#");
+                printf("#");
         }
+        
+        // move to new line
         printf("\n");
     }
+    return 0;                //prajesh.y
 }
